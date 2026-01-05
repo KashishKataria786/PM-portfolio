@@ -1,12 +1,12 @@
 import React from "react";
 
-function Work({ position, company, location,  duration }) {
+function Work({ position, company, location,  duration , grade}) {
   return (
     <article className="pt-8 border-b-2 border-dark-content pb-5 dark:border-light-content border-opacity-20 dark:border-opacity-20">
       <div className="flex justify-between items-center">
         <h1 className="text-content md:text-lg lg:text-xl">{position}</h1>
-        <div className="">
-          ""
+        <div className="text-gray-100 font-bold text-md">
+          {grade || ""}
         </div>
       </div>
       <div className="flex justify-between pt-2">

@@ -81,7 +81,7 @@ export const eduDetails = [
   {
     Position: "Masters of Technology -Computer Science Engineering",
     Company: "Chandigarh Enginnering College",
-    Location: "Chandiagarh",
+    Location: "Chandigarh",
     Type: "Full Time",
     Duration: "July 2024 - Present",
     Grade:"7.0 CGPA"

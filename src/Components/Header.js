@@ -15,7 +15,7 @@ function Header() {
   }, [isOpen]);
 
   return (
-    <header className="container mx-auto flex justify-between items-center py-4 max-width relative z-50">
+    <header className="container mx-auto flex justify-between items-center py-4 max-width relative z-50  ">
       {/* Logo */}
       <NavLink to="/" onClick={closeMenu}>
         <h1 className="text-2xl font-bold text-gray-400">

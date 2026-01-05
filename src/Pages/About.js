@@ -9,7 +9,7 @@ function About() {
         <h1 className="text-2xl text-dark-heading dark:text-light-heading md:text-4xl xl:text-5xl xl:leading-tight font-bold">
           About Me
         </h1>
-        <p className="text-content py-8 lg:max-w-3xl">{personalDetails.about}</p>
+        <p className="text-content py-8 lg:max-w-3xl">{personalDetails.summary}</p>
       </section>
       <section>
         <h1 className="text-2xl text-dark-heading dark:text-light-heading md:text-4xl xl:text-5xl xl:leading-tight font-bold">
@@ -21,7 +21,6 @@ function About() {
               position={Position}
               company={Company}
               location={Location}
-              type={Type}
               duration={Duration}
             />
           ))
@@ -37,7 +36,6 @@ function About() {
               position={Position}
               company={Company}
               location={Location}
-              type={Type}
               duration={Duration}
             />
           ))

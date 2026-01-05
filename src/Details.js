@@ -3,7 +3,7 @@
 import logogradient from "./assets/logo.svg";
 import logo from "./assets/logo2.svg";
 // Profile Image
-import profile from "./assets/profile.jpg";
+import profile from "./assets/profile.png";
 // Tech stack images
 import html from "./assets/techstack/html.png";
 import css from "./assets/techstack/css.png";
@@ -35,60 +35,80 @@ export const logos = {
 
 // Enter your Personal Details here
 export const personalDetails = {
-  name: "Pavan MG",
+  name: "Kashish Kataria",
   tagline: "I build things for web",
   img: profile,
+  summary:"I’m an AI-first full-stack engineer specializing in React, Next.js, and the MERN stack, building intelligent, scalable, and user-centric applications. My work blends AI innovation with a strong focus on privacy and security to create reliable, future-ready digital products.",
   about: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
 };
 
 // Enter your Social Media URLs here
 export const socialMediaUrl = {
-  linkdein: "https://www.linkedin.com/",
-  github: "https://www.github.com/",
-  twitter: "https://twitter.com/",
+  linkdein: "https://www.linkedin.com/in/kashishkatariaofficial",
+  github: "https://www.github.com/kashishkataria786",
+  twitter: "https://x.com/kkataria786",
   instagram: "https://www.instagram.com/",
+  leetcode:"https://leetcode.com/kashishkataria"
 };
 
 // Enter your Work Experience here
 export const workDetails = [
   {
-    Position: "Frontend Web Developer",
-    Company: `Company Name here`,
-    Location: "Bengaluru",
-    Type: "Full Time",
-    Duration: "Sep 2021 - Dec 2021",
+    Position: "Junior Spoftware Engineer",
+    Company: `Tietoevry`,
+    Location: "Chandigarh",
+    Type: "",
+    Duration: "Aug 2024 - June 2025",
   },
   {
-    Position: "Internship",
-    Company: `Company Name here`,
-    Location: "Bengaluru",
-    Type: "Internship",
-    Duration: "Sep 2021 - Dec 2021",
+    Position: "Associate Consultant- SDE",
+    Company: `Dec6 Consulting Private Limited`,
+    Location: "Gurugram",
+    Type: "",
+    Duration: "Nov 2023 - Jan 2024",
   },
   {
-    Position: "Internship",
-    Company: `Company Name here`,
-    Location: "Bengaluru",
-    Type: "Internship",
-    Duration: "Sep 2021 - Dec 2021",
+    Position: "SDE",
+    Company: `Origin Softwares`,
+    Location: "Remote",
+    Type: "",
+    Duration: "Feb 2023 - July 2023",
   },
 ];
 
 // Enter your Education Details here
 export const eduDetails = [
   {
-    Position: "Frontend Development",
-    Company: "Udemy, YouTube, Google, Medium",
-    Location: "Online",
+    Position: "Masters of Technology -Computer Science Engineering",
+    Company: "Chandigarh Enginnering College",
+    Location: "Chandiagarh",
     Type: "Full Time",
-    Duration: "Jan 2022 - Present",
+    Duration: "July 2024 - Present",
+    Grade:"7.0 CGPA"
   },
   {
-    Position: "Bachelor in Electronics & Communication",
-    Company: `Your College Name here`,
-    Location: "Bengaluru",
+    Position: "Bachelor of Technology -Computer Science Engineering",
+    Company: `Chandigarh Enginnering College`,
+    Location: "Chandigarh",
     Type: "Full Time",
-    Duration: "Aug 2020 - Present",
+    Duration: "July 2019 - Aug 2023",
+    Grade:"7.83 CGPA"
+  },
+  {
+    Position: "12th Standard",
+    Company: `Scholars Rosary Senior Secondary School`,
+    Location: "Rohtak",
+    Type: "Full Time",
+    Duration: "April 2018 - April 2019",
+    Grade:"76.4%"
+  },
+  {
+    Position: "10th Standard",
+    Company: `Scholars Rosary Senior Secondary School`,
+    Location: "Rohtak",
+    Type: "Full Time",
+    Duration: "April 2017 - April 2018",
+    Grade:"9.8 CGPA"
   },
 ];
 
@@ -113,63 +133,41 @@ export const techStackDetails = {
 // Enter your Project Details here
 export const projectDetails = [
   {
-    title: "Project title 1",
+    title: "De-bug Tracker Application",
     image: projectImage1,
-    description: `This is sample project description random things are here in description This is sample
-project lorem ipsum generator for dummy content`,
-    techstack: "HTML/CSS, JavaScript",
-    previewLink: "https://google.com",
-    githubLink: "https://github.com",
+    description: `A full-stack bug tracking platform that helps teams log, assign, and resolve issues efficiently with real-time updates and clean workflow management.`,
+    techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
+    previewLink: "https://de-bug-tracker.vercel.app/",
+    githubLink: "https://github.com/KashishKataria786/De-bug-tracker-A-bug-Tracking-Application",
   },
   {
-    title: "Project title 2",
+    title: "Dynamic Form Builder",
     image: projectImage2,
-    description: `This is sample project description random things are here in description This is sample
-project lorem ipsum generator for dummy content`,
-    techstack: "HTML/CSS, JavaScript",
-    previewLink: "https://google.com",
-    githubLink: "https://github.com",
+    description: `A dynamic drag-and-drop form builder that allows users to create, customize, and manage forms with live preview and backend data storage.`,
+    techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
+    previewLink: "https://full-stack-dynamic-form-builder.vercel.app/",
+    githubLink: "https://github.com/KashishKataria786/Full-Stack-Dynamic-Form-Builder",
   },
   {
-    title: "Project title 3",
+    title: "Expense Tracker Application",
     image: projectImage3,
-    description: `This is sample project description random things are here in description This is sample
-project lorem ipsum generator for dummy content`,
-    techstack: "HTML/CSS, JavaScript",
-    previewLink: "https://google.com",
-    githubLink: "https://github.com",
+    description: `A personal finance tracker that lets users record, categorize, and visualize expenses to better manage budgeting and spending habits.`,
+    techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
+    previewLink: "https://expense-tracker-app-5y6b.vercel.app/",
+    githubLink: "https://github.com/KashishKataria786/expense-tracker-app",
   },
   {
-    title: "Project title 4",
+    title: "Job Portal Backend",
     image: projectImage4,
-    description: `This is sample project description random things are here in description This is sample
-project lorem ipsum generator for dummy content`,
-    techstack: "HTML/CSS, JavaScript",
-    previewLink: "https://google.com",
-    githubLink: "https://github.com",
-  },
-  {
-    title: "Project title 5",
-    image: projectImage5,
-    description: `This is sample project description random things are here in description This is sample
-project lorem ipsum generator for dummy content`,
-    techstack: "HTML/CSS, JavaScript",
-    previewLink: "https://google.com",
-    githubLink: "https://github.com",
-  },
-  {
-    title: "Project title 6",
-    image: projectImage6,
-    description: `This is sample project description random things are here in description This is sample
-project lorem ipsum generator for dummy content`,
-    techstack: "HTML/CSS, JavaScript",
-    previewLink: "https://google.com",
-    githubLink: "https://github.com",
+    description: `A scalable backend API for a job portal with authentication, role-based access, job posting, applications, and Swagger API documentation.`,
+    techstack: "JavaScript, MongoDb, Node Js , Express Js",
+    previewLink: "https://job-portal-backend-gamma-rust.vercel.app/api-docs/",
+    githubLink: "https://github.com/KashishKataria786/JobPortalBackend",
   },
 ];
 
 // Enter your Contact Details here
 export const contactDetails = {
-  email: "hi@example.com",
-  phone: "+91 12345 67890",
+  email: "kkofficio@gmail.com",
+  phone: "+91 9485686863 ",
 };

@@ -54,7 +54,7 @@ export const socialMediaUrl = {
 // Enter your Work Experience here
 export const workDetails = [
   {
-    Position: "Junior Spoftware Engineer",
+    Position: "Junior Software Engineer",
     Company: `Tietoevry`,
     Location: "Chandigarh",
     Type: "",

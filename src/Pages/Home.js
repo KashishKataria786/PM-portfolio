@@ -34,7 +34,7 @@ function Home() {
     <main className="container mx-auto max-width section grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       {/* ========= LEFT CONTENT ========= */}
       <div className="text-center md:text-left space-y-4">
-        <h1 className="text-dark-heading dark:text-light-heading text-4xl md:text-5xl xl:text-6xl font-bold leading-snug">
+        <h1 className="text-dark-heading dark:text-light-heading sm:text-xl sm:font-light text-4xl md:text-5xl xl:text-6xl font-bold leading-snug">
           Hi,<br />My Name is
         </h1>
 

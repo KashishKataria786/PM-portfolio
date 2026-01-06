@@ -5,7 +5,7 @@ function Work({ position, company, location,  duration , grade}) {
     <article className="pt-8 border-b-2 border-dark-content pb-5 dark:border-light-content border-opacity-20 dark:border-opacity-20">
       <div className="flex justify-between items-center">
         <h1 className="text-content md:text-lg lg:text-xl">{position}</h1>
-        <div className="text-gray-100 font-bold text-md">
+        <div className="text-gray-100 font-light text-[12px]">
           {grade || ""}
         </div>
       </div>

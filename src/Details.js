@@ -173,6 +173,14 @@ export const projectDetails = [
     githubLink: "https://github.com/KashishKataria786/De-bug-tracker-A-bug-Tracking-Application",
   },
   {
+    title: "AI-Tools",
+    image: projectImage1,
+    description: `A full-stack AI tools application consisting of various tools such as image generation and visualizer and psd-analyzer ans summarizer.`,
+    techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
+    previewLink: "https://aitools-sandy.vercel.app/",
+    githubLink: "https://github.com/KashishKataria786/AI-Tools-Full-stack-",
+  },
+  {
     title: "Dynamic Form Builder",
     image: projectImage2,
     description: `A dynamic drag-and-drop form builder that allows users to create, customize, and manage forms with live preview and backend data storage.`,

@@ -1,7 +1,5 @@
 // Enter all your detials in this file
-// Logo images
-import logogradient from "./assets/logo.svg";
-import logo from "./assets/logo2.svg";
+
 // Profile Image
 import profile from "./assets/profile.png";
 // Tech stack images
@@ -19,6 +17,25 @@ import git from "./assets/techstack/git.png";
 import npm from "./assets/techstack/npm.png";
 import postman from "./assets/techstack/postman.png";
 import figma from "./assets/techstack/figma.png";
+import Bursuite from './assets/techstack/Bursuite.png';
+import cpp from './assets/techstack/cpp.png';
+import docker from './assets/techstack/docker.png';
+import expressjs from './assets/techstack/expressjs.png';
+import kalilinux from './assets/techstack/kalilinux.png';
+import mac from './assets/techstack/mac.png';
+import python from './assets/techstack/python.png';
+import Linux from './assets/techstack/Linux.png';
+import mongodb from './assets/techstack/mongodb.png';
+import nodejs from  './assets/techstack/nodejs.png'
+import postgres from './assets/techstack/postgres.png'
+import Reactnative from './assets/techstack/Reactnative.png'
+import sql from './assets/techstack/sql.png'
+import typescript from'./assets/techstack/typescript.png'
+import windows from'./assets/techstack/windows.png'
+import azure from './assets/techstack/azure.png'
+
+
+
 // Porject Images
 import projectImage1 from "./assets/projects/project1.jpg";
 import projectImage2 from "./assets/projects/project2.jpg";
@@ -27,11 +44,7 @@ import projectImage4 from "./assets/projects/project4.jpg";
 import projectImage5 from "./assets/projects/project5.jpg";
 import projectImage6 from "./assets/projects/project6.jpg";
 
-// Logos
-export const logos = {
-  logogradient: logogradient,
-  logo: logo,
-};
+
 
 // Enter your Personal Details here
 export const personalDetails = {
@@ -128,7 +141,26 @@ export const techStackDetails = {
   git: git,
   github: github,
   figma: figma,
+  kalilinux:kalilinux,
+  python:python,
+  Linux:Linux,
+  mac:mac,
+  mongodb:mongodb,
 };
+
+export const operatingSystems=[windows,mac,Linux,kalilinux];
+
+export const tools=[azure,
+  postman,
+  Bursuite,
+  docker,
+  figma,
+  github,
+  npm,
+  vscode,
+]
+
+export const technologies=[html, css, js, react, mongodb, nodejs, expressjs, tailwind, git, ]
 
 // Enter your Project Details here
 export const projectDetails = [

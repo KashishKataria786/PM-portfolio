@@ -86,7 +86,7 @@ function Home() {
 
         {/* profile image */}
         <img
-          className="w-2/3 sm:w-1/2 md:w-2/3 lg:w-1/2 xl:w-1/2 max-w-md rounded-full shadow-xl"
+          className="w-2/3 sm:w-1/2 md:w-2/3 lg:w-1/2 xl:w-1/2 max-w-md "
           src={img}
           alt={name}
         />

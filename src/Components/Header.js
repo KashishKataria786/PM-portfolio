@@ -1,136 +1,152 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { socialMediaUrl } from "../Details";
+import { socialMediaUrl, contactDetails } from "../Details";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { linkdein, github, twitter } = socialMediaUrl;
+  const { email } = contactDetails;
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
   // Prevent background scroll when menu is open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   }, [isOpen]);
 
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Technologies", href: "#technologies" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
- <div className='sticky top-0 bg-dark-mode'>
-     <header className="container  mx-auto flex justify-between items-center py-4 max-width relative z-50  ">
-      {/* Logo */}
-      <NavLink to="/" onClick={closeMenu}>
-        <h1 className="text-2xl font-bold text-gray-400">
-          Kashish.<span className="text-gray-600">dev</span>
-        </h1>
-      </NavLink>
+    <header className="sticky top-0 z-50 bg-white border-b border-border-light">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-12 lg:px-24">
+        {/* Logo */}
+        <a href="#home" onClick={closeMenu} className="group relative z-[60]">
+          <h1 className="text-xl font-bold tracking-tighter text-soft-black">
+            KASHISH<span className="text-accent">.</span>
+          </h1>
+        </a>
 
-      {/* Hamburger (Mobile Only) */}
-      <button
-        onClick={toggleMenu}
-        className="md:hidden text-gray-600 focus:outline-none z-50"
-      >
-        {isOpen ? (
-          // Close icon
-          <svg width="28" height="28" viewBox="0 0 24 24">
-            <path
-              d="M6 6L18 18M6 18L18 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        ) : (
-          // Hamburger icon
-          <svg width="28" height="28" viewBox="0 0 24 24">
-            <path
-              d="M4 6h16M4 12h16M4 18h16"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        )}
-      </button>
-
-      {/* Navigation */}
-      <nav
-        className={`
-          fixed inset-0 bg-white dark:bg-dark-background
-          flex flex-col justify-center items-center
-          transform transition-transform duration-300
-          ${isOpen ? "translate-x-0" : "translate-x-full"}
-          md:static md:translate-x-0 md:flex md:flex-row md:bg-transparent
-        `}
-      >
-        {/* Nav Links */}
-        <ul className="dark:text-light-content  text-center md:flex md:items-center md:space-x-6 text-lg font-medium">
-          {["/", "/about", "/technologies", "/projects", "/contact"].map(
-            (path, i) => (
-              <li key={i} className="my-4 md:my-0">
-                <NavLink
-                  to={path}
-                  onClick={closeMenu}
-                  className="hover:text-gray-500"
+        {/* Desktop Navigation (md and up) */}
+        <nav className="hidden md:flex items-center space-x-8">
+          <ul className="flex items-center space-x-8 text-[13px] font-semibold uppercase tracking-widest">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  className="text-muted hover:text-soft-black transition-colors relative group"
                 >
-                  {path === "/" ? "Home" : path.replace("/", "").replace(/^\w/, c => c.toUpperCase())}
-                </NavLink>
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full"></span>
+                </a>
               </li>
-            )
-          )}
-        </ul>
+            ))}
+          </ul>
 
-        {/* Social Icons */}
-        <ul className="flex space-x-6 mt-8 md:mt-0 md:ml-8">
-          <li>
-            <a href={twitter} target="_blank" rel="noreferrer noopener">
-              <svg
-                className="dark:fill-light-heading fill-dark-heading"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M16.875 1.875C8.59152 1.875 1.875 8.59152 1.875 16.875C1.875 25.1585 8.59152 31.875 16.875 31.875C25.1585 31.875 31.875 25.1585 31.875 16.875C31.875 8.59152 25.1585 1.875 16.875 1.875ZM24.0837 13.1819C24.0937 13.3393 24.0937 13.5033 24.0937 13.6641C24.0937 18.5792 20.3504 24.2411 13.51 24.2411C11.4007 24.2411 9.44531 23.6283 7.79799 22.5737C8.09933 22.6071 8.38728 22.6205 8.69531 22.6205C10.4364 22.6205 12.0368 22.0312 13.3125 21.0335C11.6786 21 10.3058 19.9286 9.83705 18.4554C10.4096 18.5391 10.9252 18.5391 11.5145 18.3884C10.6732 18.2175 9.91699 17.7605 9.37438 17.0953C8.83178 16.43 8.53623 15.5973 8.53795 14.7388V14.692C9.03013 14.9699 9.60938 15.1406 10.2154 15.1641C9.70595 14.8245 9.28814 14.3645 8.99903 13.8249C8.70993 13.2852 8.55845 12.6825 8.55804 12.0703C8.55804 11.3772 8.73884 10.7444 9.06362 10.1953C9.99744 11.3449 11.1627 12.2851 12.4837 12.9548C13.8047 13.6245 15.2518 14.0088 16.731 14.0826C16.2054 11.5547 18.0938 9.50893 20.3638 9.50893C21.4353 9.50893 22.3996 9.95759 23.0792 10.6808C23.9196 10.5234 24.7232 10.2087 25.4397 9.78683C25.1618 10.6473 24.5792 11.3739 23.8058 11.8326C24.5558 11.7522 25.279 11.5446 25.9487 11.2533C25.4431 11.9967 24.8103 12.6562 24.0837 13.1819Z" />
+          <div className="h-4 w-[1px] bg-border-light mx-2"></div>
+
+          <div className="flex items-center space-x-4">
+            <a href={github} target="_blank" rel="noreferrer noopener" className="text-muted hover:text-soft-black transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
             </a>
-          </li>
-          <li>
-            <a href={linkdein} target="_blank" rel="noreferrer noopener">
-              <svg
-                className="dark:fill-light-heading fill-dark-heading"
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M15 0.599976C7.04701 0.599976 0.600006 7.04698 0.600006 15C0.600006 22.953 7.04701 29.4 15 29.4C22.953 29.4 29.4 22.953 29.4 15C29.4 7.04698 22.953 0.599976 15 0.599976ZM11.475 20.9685H8.55901V11.5845H11.475V20.9685ZM9.99901 10.4325C9.07801 10.4325 8.48251 9.77997 8.48251 8.97297C8.48251 8.14948 9.09601 7.51648 10.0365 7.51648C10.977 7.51648 11.553 8.14948 11.571 8.97297C11.571 9.77997 10.977 10.4325 9.99901 10.4325ZM22.125 20.9685H19.209V15.768C19.209 14.5575 18.786 13.7355 17.7315 13.7355C16.926 13.7355 16.4475 14.292 16.236 14.8275C16.158 15.018 16.1385 15.288 16.1385 15.5565V20.967H13.221V14.577C13.221 13.4055 13.1835 12.426 13.1445 11.583H15.678L15.8115 12.8865H15.87C16.254 12.2745 17.1945 11.3715 18.768 11.3715C20.6865 11.3715 22.125 12.657 22.125 15.42V20.9685Z" />
+            <a href={linkdein} target="_blank" rel="noreferrer noopener" className="text-muted hover:text-soft-black transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-          </li>
-          <li>
-            <a href={github} target="_blank" rel="noreferrer noopener">
-              <svg
-                className="dark:fill-light-heading fill-dark-heading"
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M15 0C6.7125 0 0 6.7125 0 15C0 21.6375 4.29375 27.2437 10.2563 29.2313C11.0063 29.3625 11.2875 28.9125 11.2875 28.5188C11.2875 28.1625 11.2688 26.9813 11.2688 25.725C7.5 26.4188 6.525 24.8062 6.225 23.9625C6.05625 23.5312 5.325 22.2 4.6875 21.8438C4.1625 21.5625 3.4125 20.8687 4.66875 20.85C5.85 20.8313 6.69375 21.9375 6.975 22.3875C8.325 24.6562 10.4812 24.0187 11.3438 23.625C11.475 22.65 11.8688 21.9937 12.3 21.6187C8.9625 21.2437 5.475 19.95 5.475 14.2125C5.475 12.5813 6.05625 11.2313 7.0125 10.1813C6.8625 9.80625 6.3375 8.26875 7.1625 6.20625C7.1625 6.20625 8.41875 5.8125 11.2875 7.74375C12.4875 7.40625 13.7625 7.2375 15.0375 7.2375C16.3125 7.2375 17.5875 7.40625 18.7875 7.74375C21.6562 5.79375 22.9125 6.20625 22.9125 6.20625C23.7375 8.26875 23.2125 9.80625 23.0625 10.1813C24.0188 11.2313 24.6 12.5625 24.6 14.2125C24.6 19.9688 21.0938 21.2437 17.7563 21.6187C18.3 22.0875 18.7688 22.9875 18.7688 24.3937C18.7688 26.4 18.75 28.0125 18.75 28.5188C18.75 28.9125 19.0312 29.3813 19.7812 29.2313C22.759 28.2259 25.3465 26.3121 27.1796 23.7592C29.0127 21.2063 29.9991 18.1429 30 15C30 6.7125 23.2875 0 15 0Z"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </nav>
+
+        {/* Hamburger Button (Mobile Only) */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden relative z-[60] text-soft-black focus:outline-none p-2"
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 h-5 flex flex-col justify-between items-end">
+            <span className={`h-0.5 bg-current transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2.5" : "w-6"}`}></span>
+            <span className={`h-0.5 bg-current transition-all duration-300 ${isOpen ? "opacity-0" : "w-4"}`}></span>
+            <span className={`h-0.5 bg-current transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-5"}`}></span>
+          </div>
+        </button>
+
+        {/* Improved Mobile Menu Overlay */}
+        <div
+          className={`
+            fixed inset-0 z-50 bg-white md:hidden
+            transition-transform duration-500 cubic-bezier(0.77,0,0.175,1)
+            ${isOpen ? "translate-x-0" : "translate-x-full"}
+          `}
+        >
+          <div className="flex flex-col h-full px-8 py-24">
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted mb-8 animate-in fade-in slide-in-from-left duration-700">Navigation</p>
+
+            <nav className="flex flex-col space-y-6">
+              {navLinks.map((link, i) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={`
+                    text-4xl font-bold text-soft-black hover:text-accent transition-colors
+                    animate-in fade-in slide-in-from-left
+                  `}
+                  style={{ animationDelay: `${(i + 1) * 100}ms` }}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            <div className="mt-auto animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
+              <div className="h-[1px] w-full bg-border-light mb-10"></div>
+
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted mb-3">Get in touch</p>
+                  <a href={`mailto:${email}`} className="text-xl font-bold text-soft-black underline decoration-accent decoration-2 underline-offset-4">
+                    {email}
+                  </a>
+                </div>
+
+                <div className="flex items-center space-x-6">
+                  <a href={github} target="_blank" rel="noreferrer noopener" className="text-soft-black">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                  <a href={linkdein} target="_blank" rel="noreferrer noopener" className="text-soft-black">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href={twitter} target="_blank" rel="noreferrer noopener" className="text-soft-black">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
-  </div>
   );
 }
 

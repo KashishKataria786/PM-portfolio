@@ -1,10 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { personalDetails, techStackDetails } from "../Details";
-import { Link } from "react-router-dom";
 
 function Home() {
-  const { name, tagline, img ,summary} = personalDetails;
+  const { name, tagline, img, summary } = personalDetails;
 
   // floating icons refs
   const iconsRef = useRef([]);
@@ -15,81 +14,89 @@ function Home() {
   };
 
   useEffect(() => {
-    // ✨ floating icons animation only
     iconsRef.current.forEach((icon, index) => {
       gsap.to(icon, {
-        y: gsap.utils.random(-14, 14),
-        x: gsap.utils.random(-14, 14),
-        rotate: gsap.utils.random(-12, 12),
-        duration: gsap.utils.random(4, 7),
-        ease: "easeInOut",
+        y: gsap.utils.random(-15, 15),
+        x: gsap.utils.random(-15, 15),
+        rotate: gsap.utils.random(-10, 10),
+        duration: gsap.utils.random(3, 5),
+        ease: "power1.inOut",
         repeat: -1,
         yoyo: true,
-        delay: index * 0.2,
+        delay: index * 0.1,
       });
     });
   }, []);
 
   return (
-    <main className="container mx-auto max-width section grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <main className="container mx-auto max-width section grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[90vh]">
       {/* ========= LEFT CONTENT ========= */}
-      <div className="text-center md:text-left space-y-4">
-        <h1 className="text-dark-heading dark:text-light-heading sm:text-xl sm:font-light text-4xl md:text-5xl xl:text-6xl font-bold leading-snug">
-          Hi,<br />My Name is
-        </h1>
+      <div className="text-center lg:text-left space-y-8 animate-in fade-in slide-in-from-left duration-1000">
+        <div className="space-y-4">
+          <p className="text-accent font-medium tracking-wider uppercase text-sm">Welcome to my portfolio</p>
+          <h1 className="text-5xl md:text-6xl xl:text-8xl tracking-tight leading-[1.1]">
+            I'm <span className="text-soft-black">{name}</span>
+          </h1>
+          <h2 className="text-2xl md:text-3xl text-muted font-medium">
+            {tagline}
+          </h2>
+        </div>
 
-        <h1 className="bg-clip-text text-transparent text-dark-heading dark:text-light-heading text-5xl md:text-6xl xl:text-7xl font-bold leading-tight">
-          {name}
-        </h1>
-
-        <h2 className="text-dark-heading dark:text-light-heading text-2xl md:text-3xl xl:text-4xl font-semibold leading-snug">
-          {tagline}
-        </h2>
-
-        <p className="text-gray-400 max-w-xl md:mt-2 mx-auto md:mx-0">
-        {summary}
+        <p className="text-muted text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
+          {summary}
         </p>
 
         {/* Buttons */}
-        <div className="flex gap-4 justify-center md:justify-start pt-3">
+        <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
           <a
             href="/resume.pdf"
             download='resume.pdf'
-            className="px-5 py-2 rounded-md bg-gray-800 dark:bg-gray-200 text-sm"
+            className="button-primary"
           >
             Download Resume
           </a>
 
-          <Link
-            to="/contact"
-            className="px-5 py-2 rounded-md border border-gray-800 dark:border-gray-200 text-gray-200 text-sm"
+          <a
+            href="#contact"
+            className="button-secondary"
           >
-            Contact
-          </Link>
+            Get in Touch
+          </a>
         </div>
       </div>
 
       {/* ========= RIGHT IMAGE & ROUND FLOATING ICONS ========= */}
-      <div className="relative flex justify-center md:justify-end">
+      <div className="relative flex justify-center lg:justify-end animate-in fade-in zoom-in duration-1000">
+        <div className="relative w-full max-w-lg aspect-square">
+          {/* Decorative background circle */}
+          <div className="absolute inset-0 bg-gray-100 rounded-full scale-110 opacity-50 blur-3xl"></div>
 
-        <div className="absolute inset-0 -z-10 flex flex-wrap gap-4 justify-center md:justify-end opacity-70 pointer-events-none">
-          {Object.values(techStackDetails).map((icon, i) => (
+          {/* Floating icons background */}
+          <div className="absolute inset-0 -z-10 overflow-visible">
+            {Object.values(techStackDetails).slice(0, 10).map((icon, i) => (
+              <img
+                key={i}
+                ref={addToIconsRef}
+                src={icon}
+                alt="skill"
+                className="absolute w-12 h-12 md:w-16 md:h-16 object-contain grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all cursor-crosshair"
+                style={{
+                  top: `${Math.random() * 80}%`,
+                  left: `${Math.random() * 80}%`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Profile image container */}
+          <div className="relative z-10 w-full h-full rounded-sm overflow-hidden border-8 border-white shadow-2xl">
             <img
-              key={i}
-              ref={addToIconsRef}
-              src={icon}
-              alt="skill"
-              className="w-10 h-10 sm:w-12 sm:h-12 md:w-10 md:h-10 xl:w-14 xl:h-14 object-contain"
+              className="w-full h-full object-cover"
+              src={img}
+              alt={name}
             />
-          ))}
+          </div>
         </div>
-
-        {/* profile image */}
-        <img
-          className="w-2/3 sm:w-1/2 md:w-2/3 lg:w-1/2 xl:w-1/2 max-w-md "
-          src={img}
-          alt={name}
-        />
       </div>
     </main>
   );

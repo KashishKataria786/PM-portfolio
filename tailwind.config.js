@@ -3,18 +3,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: "Poppins, sans-serif",
+        primary: "'Inter', sans-serif",
+        mono: "'JetBrains Mono', monospace",
       },
       colors: {
-        "light-content": "#A7A7A7",
-        "dark-heading": "#1f2428",
-        "dark-content": "#666666",
-        "light-heading": "#CCCCCC",
-        "dark-mode": "#191919",
-        "dark-card": "#363636",
-        "green-text": "#018C0F",
-        "greenbg": "#D7FFE0",
+        "soft-black": "#121212",
+        "soft-white": "#FAFAFA",
+        "accent": "#3B82F6", // Clean Blue
+        "muted": "#6B7280",
+        "border-light": "#E5E7EB",
       },
+      borderRadius: {
+        'sm': '0.125rem',
+      }
     },
   },
   plugins: [],

@@ -1,27 +1,68 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.max-width {
-  @apply lg:mx-auto lg:px-24 xl:px-48 px-5;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-soft-white text-soft-black font-primary overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-primary text-soft-black font-bold;
+  }
 }
-.bg-gradient {
-  @apply bg-gradient-to-r from-sky-500 via-purple-500 to-pink-600;
+
+@layer utilities {
+  .max-width {
+    @apply lg:mx-auto lg:px-24 xl:px-48 px-5 max-w-[1440px];
+  }
+
+  .section {
+    @apply py-24;
+  }
+
+  .card {
+    @apply bg-white border border-border-light rounded-sm p-6 shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .button-primary {
+    @apply px-6 py-2 bg-soft-black text-white rounded-sm hover:bg-gray-800 transition-colors;
+  }
+
+  .button-secondary {
+    @apply px-6 py-2 border border-soft-black text-soft-black rounded-sm hover:bg-gray-100 transition-colors;
+  }
 }
-.text-gradient {
-  @apply bg-clip-text bg-gradient text-transparent;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
-.section {
-  @apply pt-10 xl:pt-20 2xl:pt-20;
+
+::-webkit-scrollbar-track {
+  background: #FAFAFA;
 }
-.text-content {
-  @apply dark:text-light-content text-dark-content;
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
 }
-body {
-  overflow-x: hidden;
+
+::-webkit-scrollbar-thumb:hover {
+  background: #121212;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
+
+::selection {
+  background: #121212;
+  color: #FFFFFF;
 }

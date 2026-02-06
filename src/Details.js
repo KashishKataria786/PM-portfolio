@@ -26,12 +26,12 @@ import mac from './assets/techstack/mac.png';
 import python from './assets/techstack/python.png';
 import Linux from './assets/techstack/Linux.png';
 import mongodb from './assets/techstack/mongodb.png';
-import nodejs from  './assets/techstack/nodejs.png'
+import nodejs from './assets/techstack/nodejs.png'
 import postgres from './assets/techstack/postgres.png'
 import Reactnative from './assets/techstack/Reactnative.png'
 import sql from './assets/techstack/sql.png'
-import typescript from'./assets/techstack/typescript.png'
-import windows from'./assets/techstack/windows.png'
+import typescript from './assets/techstack/typescript.png'
+import windows from './assets/techstack/windows.png'
 import azure from './assets/techstack/azure.png'
 
 
@@ -41,8 +41,6 @@ import projectImage1 from "./assets/projects/project1.jpg";
 import projectImage2 from "./assets/projects/project2.jpg";
 import projectImage3 from "./assets/projects/project3.jpg";
 import projectImage4 from "./assets/projects/project4.jpg";
-import projectImage5 from "./assets/projects/project5.jpg";
-import projectImage6 from "./assets/projects/project6.jpg";
 
 
 
@@ -51,8 +49,8 @@ export const personalDetails = {
   name: "Kashish Kataria",
   tagline: "I build things for web",
   img: profile,
-  summary:"I’m an AI-first full-stack engineer specializing in React, Next.js, and the MERN stack, building intelligent, scalable, and user-centric applications. My work blends AI innovation with a strong focus on privacy and security to create reliable, future-ready digital products.",
-  about: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
+  summary: "I’m an AI-first full-stack engineer specializing in React, Next.js, and the MERN stack, building intelligent, scalable, and user-centric applications. My work blends AI innovation with a strong focus on privacy and security to create reliable, future-ready digital products.",
+  about: `I Love buidling stuff for the web and also have abiities to breakOne (Yeah I know how to hack! LOL). I am a passionate builder and a security focused geek.`,
 };
 
 // Enter your Social Media URLs here
@@ -60,8 +58,10 @@ export const socialMediaUrl = {
   linkdein: "https://www.linkedin.com/in/kashishkatariaofficial",
   github: "https://www.github.com/kashishkataria786",
   twitter: "https://x.com/kkataria786",
-  instagram: "https://www.instagram.com/",
-  leetcode:"https://leetcode.com/kashishkataria"
+  instagram: "https://www.instagram.com/kashverrse",
+  leetcode: "https://leetcode.com/kashishkataria",
+  tryhackme: "https://tryhackme.com/p/kashishkataria",
+  youtube: "https://youtube.com/@Kashverse786",
 };
 
 // Enter your Work Experience here
@@ -97,7 +97,7 @@ export const eduDetails = [
     Location: "Chandigarh",
     Type: "Full Time",
     Duration: "July 2024 - Present",
-    Grade:"7.0 CGPA"
+    Grade: "7.0 CGPA"
   },
   {
     Position: "Bachelor of Technology -Computer Science Engineering",
@@ -105,7 +105,7 @@ export const eduDetails = [
     Location: "Chandigarh",
     Type: "Full Time",
     Duration: "July 2019 - Aug 2023",
-    Grade:"7.83 CGPA"
+    Grade: "7.83 CGPA"
   },
   {
     Position: "12th Standard",
@@ -113,7 +113,7 @@ export const eduDetails = [
     Location: "Rohtak",
     Type: "Full Time",
     Duration: "April 2018 - April 2019",
-    Grade:"76.4%"
+    Grade: "76.4%"
   },
   {
     Position: "10th Standard",
@@ -121,36 +121,36 @@ export const eduDetails = [
     Location: "Rohtak",
     Type: "Full Time",
     Duration: "April 2017 - April 2018",
-    Grade:"9.8 CGPA"
+    Grade: "9.8 CGPA"
   },
 ];
 
 // Tech Stack and Tools
-export const techStackDetails = {
-  html: html,
-  css: css,
-  js: js,
-  react: react,
-  redux: redux,
-  sass: sass,
-  tailwind: tailwind,
-  bootstrap: bootstrap,
-  vscode: vscode,
-  postman: postman,
-  npm: npm,
-  git: git,
-  github: github,
-  figma: figma,
-  kalilinux:kalilinux,
-  python:python,
-  Linux:Linux,
-  mac:mac,
-  mongodb:mongodb,
-};
+export const techStackDetails = [
+  html,
+  css,
+  js,
+  react,
+  redux,
+  sass,
+  tailwind,
+  bootstrap,
+  vscode,
+  postman,
+  npm,
+  git,
+  github,
+  figma,
+  kalilinux,
+  python,
+  Linux,
+  mac, mongodb,
 
-export const operatingSystems=[windows,mac,Linux,kalilinux];
+];
 
-export const tools=[azure,
+export const operatingSystems = [windows, mac, Linux, kalilinux];
+
+export const tools = [azure,
   postman,
   Bursuite,
   docker,
@@ -160,7 +160,7 @@ export const tools=[azure,
   vscode,
 ]
 
-export const technologies=[html, css, js, react, mongodb, nodejs, expressjs, tailwind, git, ]
+export const technologies = [html, css, js, cpp, react, mongodb, nodejs, expressjs, tailwind, git, postgres, sql, typescript, Reactnative]
 
 // Enter your Project Details here
 export const projectDetails = [

@@ -1,8 +1,8 @@
 import React from "react";
-import { technologies, tools, operatingSystems } from "../Details";
+import { technologies, tools, operatingSystems, techStackDetails } from "../Details";
 
 function Technologies() {
-  const SkillGrid = ({ title, items }) => (
+  const SkillGrid = ({ title, items=[] }) => (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom duration-1000">
       <div className="space-y-2">
         <h3 className="text-2xl font-bold text-soft-black">{title}</h3>
@@ -38,6 +38,7 @@ function Technologies() {
       </div>
 
       <div className="space-y-24">
+        <SkillGrid title="Tech Stacks" items={techStackDetails} />
         <SkillGrid title="Core Technologies" items={technologies} />
         <SkillGrid title="Professional Tools" items={tools} />
         <SkillGrid title="Platforms & OS" items={operatingSystems} />

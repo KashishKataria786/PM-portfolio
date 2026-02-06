@@ -23,6 +23,7 @@ function Header() {
     { name: "About", href: "#about" },
     { name: "Technologies", href: "#technologies" },
     { name: "Projects", href: "#projects" },
+    { name: "Socials", href: "#socials" },
     { name: "Contact", href: "#contact" },
   ];
 

@@ -5,6 +5,7 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Projects from "./Pages/Projects";
 import Technologies from "./Pages/Technologies";
+import Socials from "./Pages/Socials";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </section>
         <section id="projects">
           <Projects />
+        </section>
+        <section id="socials">
+          <Socials />
         </section>
         <section id="contact">
           <Contact />

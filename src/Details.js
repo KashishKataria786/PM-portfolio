@@ -37,11 +37,12 @@ import azure from './assets/techstack/azure.png'
 
 
 // Porject Images
-import projectImage1 from "./assets/projects/project1.jpg";
-import projectImage2 from "./assets/projects/project2.jpg";
-import projectImage3 from "./assets/projects/project3.jpg";
-import projectImage4 from "./assets/projects/project4.jpg";
 
+import aitools from "./assets/projects/aitools.png";
+import formss from "./assets/projects/form.png";
+import debug from "./assets/projects/debug.png";
+import agency from "./assets/projects/agency.png";
+import jobportal from './assets/projects/jobportal.png';
 
 
 // Enter your Personal Details here
@@ -91,21 +92,21 @@ export const workDetails = [
 
 // Enter your Education Details here
 export const eduDetails = [
-  {
-    Position: "Masters of Technology -Computer Science Engineering",
-    Company: "Chandigarh Enginnering College",
-    Location: "Chandigarh",
-    Type: "Full Time",
-    Duration: "July 2024 - Present",
-    Grade: "7.0 CGPA"
-  },
+  // {
+  //   Position: "Masters of Technology -Computer Science Engineering",
+  //   Company: "Chandigarh Enginnering College",
+  //   Location: "Chandigarh",
+  //   Type: "Full Time",
+  //   Duration: "July 2024 - Present",
+  //   Grade: "7.0 CGPA"
+  // },
   {
     Position: "Bachelor of Technology -Computer Science Engineering",
     Company: `Chandigarh Enginnering College`,
     Location: "Chandigarh",
     Type: "Full Time",
     Duration: "July 2019 - Aug 2023",
-    Grade: "7.83 CGPA"
+    Grade: "78.3%"
   },
   {
     Position: "12th Standard",
@@ -121,7 +122,7 @@ export const eduDetails = [
     Location: "Rohtak",
     Type: "Full Time",
     Duration: "April 2017 - April 2018",
-    Grade: "9.8 CGPA"
+    Grade: "93.5%"
   },
 ];
 
@@ -165,40 +166,40 @@ export const technologies = [html, css, js, cpp, react, mongodb, nodejs, express
 // Enter your Project Details here
 export const projectDetails = [
   {
-    title: "De-bug Tracker Application",
-    image: projectImage1,
+     title: "AgencyFlow -Agency Management Tool",
+    image: agency,
+    description: `A full-stack Agency Management application consisting of various Tools required for Managent of a Small Business Needs.`,
+    techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js , Clerk, Antigravity, AI ",
+    previewLink: "https://agencyflow-eta.vercel.app/",
+    githubLink: "https://github.com/KashishKataria786/AgencyFlow-An-Agency-Management-Software",
+  },
+  {
+    title: "De-bug Tracker- Bug Tracking Application",
+    image: debug,
     description: `A full-stack bug tracking platform that helps teams log, assign, and resolve issues efficiently with real-time updates and clean workflow management.`,
     techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
     previewLink: "https://de-bug-tracker.vercel.app/",
     githubLink: "https://github.com/KashishKataria786/De-bug-tracker-A-bug-Tracking-Application",
   },
   {
-    title: "AI-Tools",
-    image: projectImage1,
+    title: "AI-Tools - A compilation of AI Applications",
+    image: aitools,
     description: `A full-stack AI tools application consisting of various tools such as image generation and visualizer and psd-analyzer ans summarizer.`,
     techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
     previewLink: "https://aitools-sandy.vercel.app/",
     githubLink: "https://github.com/KashishKataria786/AI-Tools-Full-stack-",
   },
   {
-    title: "Dynamic Form Builder",
-    image: projectImage2,
+    title: "Dynamic Form Builder - A Form Builder application",
+    image: formss,
     description: `A dynamic drag-and-drop form builder that allows users to create, customize, and manage forms with live preview and backend data storage.`,
     techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
     previewLink: "https://full-stack-dynamic-form-builder.vercel.app/",
     githubLink: "https://github.com/KashishKataria786/Full-Stack-Dynamic-Form-Builder",
   },
   {
-    title: "Expense Tracker Application",
-    image: projectImage3,
-    description: `A personal finance tracker that lets users record, categorize, and visualize expenses to better manage budgeting and spending habits.`,
-    techstack: "HTML/CSS, JavaScript, MongoDb, Node Js , React Js, Express Js",
-    previewLink: "https://expense-tracker-app-5y6b.vercel.app/",
-    githubLink: "https://github.com/KashishKataria786/expense-tracker-app",
-  },
-  {
-    title: "Job Portal Backend",
-    image: projectImage4,
+    title: "Job Portal Backend - A full fledged Backend App",
+    image: jobportal,
     description: `A scalable backend API for a job portal with authentication, role-based access, job posting, applications, and Swagger API documentation.`,
     techstack: "JavaScript, MongoDb, Node Js , Express Js",
     previewLink: "https://job-portal-backend-gamma-rust.vercel.app/api-docs/",

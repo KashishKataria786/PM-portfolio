@@ -43,6 +43,7 @@ import formss from "./assets/projects/form.png";
 import debug from "./assets/projects/debug.png";
 import agency from "./assets/projects/agency.png";
 import jobportal from './assets/projects/jobportal.png';
+import flashcard from './assets/projects/ai-flashcard.png';
 
 
 // Enter your Personal Details here
@@ -204,6 +205,14 @@ export const projectDetails = [
     techstack: "JavaScript, MongoDb, Node Js , Express Js",
     previewLink: "https://job-portal-backend-gamma-rust.vercel.app/api-docs/",
     githubLink: "https://github.com/KashishKataria786/JobPortalBackend",
+  },
+   {
+    title: "AI FlashCard Generation App",
+    image: flashcard,
+    description: `An AI based FlashCard generation App that uses PDF files to generate Flashcards using AI models.`,
+    techstack: "JavaScript, React, MongoDb, Node Js , Express Js , HuggingFace models, ",
+    previewLink: "https://cuemath-flashcard-web-app.vercel.app/",
+    githubLink: "https://github.com/KashishKataria786/AI-flashcard-web-app",
   },
 ];
 

@@ -102,7 +102,7 @@ export const eduDetails = [
   //   Grade: "7.0 CGPA"
   // },
   {
-    Position: "Bachelor of Technology -Computer Science Engineering",
+    Position: "B.Tech -Computer Science Engineering",
     Company: `Chandigarh Enginnering College`,
     Location: "Chandigarh",
     Type: "Full Time",
@@ -110,7 +110,7 @@ export const eduDetails = [
     Grade: "78.3%"
   },
   {
-    Position: "12th Standard",
+    Position: "12th",
     Company: `Scholars Rosary Senior Secondary School`,
     Location: "Rohtak",
     Type: "Full Time",
@@ -118,7 +118,7 @@ export const eduDetails = [
     Grade: "76.4%"
   },
   {
-    Position: "10th Standard",
+    Position: "10th",
     Company: `Scholars Rosary Senior Secondary School`,
     Location: "Rohtak",
     Type: "Full Time",

@@ -1,12 +1,67 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Work from "../Components/Work";
 import { personalDetails, workDetails, eduDetails } from "../Details";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function About() {
+  const introRef = useRef(null);
+  const workRef = useRef(null);
+  const eduRef = useRef(null);
+
+  useEffect(() => {
+    // Intro animation
+    gsap.fromTo(introRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: introRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Work experience slide-in from left
+    gsap.fromTo(workRef.current,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: workRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Education slide-in from right
+    gsap.fromTo(eduRef.current,
+      { opacity: 0, x: 50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: eduRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+  }, []);
+
   return (
     <div className="container mx-auto max-width section space-y-24">
       {/* Introduction */}
-      <section className="animate-in fade-in slide-in-from-bottom duration-1000">
+      <section ref={introRef}>
         <div className="max-w-3xl space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-soft-black">
             About Me
@@ -24,7 +79,7 @@ function About() {
       {/* Experience & Education Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         {/* Work Experience */}
-        <section className="animate-in fade-in slide-in-from-left duration-1000">
+        <section ref={workRef}>
           <div className="space-y-8">
             <h2 className="text-3xl font-bold text-soft-black flex items-center gap-3">
               Work Experience
@@ -44,7 +99,7 @@ function About() {
         </section>
 
         {/* Education */}
-        <section className="animate-in fade-in slide-in-from-right duration-1000">
+        <section ref={eduRef}>
           <div className="space-y-8">
             <h2 className="text-3xl font-bold text-soft-black flex items-center gap-3">
               Education

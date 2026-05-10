@@ -1,12 +1,17 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { personalDetails, techStackDetails } from "../Details";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
   const { name, tagline, img, summary } = personalDetails;
 
   // floating icons refs
   const iconsRef = useRef([]);
+  const contentRef = useRef(null);
+  const imageRef = useRef(null);
   iconsRef.current = [];
 
   const addToIconsRef = (el) => {
@@ -14,6 +19,7 @@ function Home() {
   };
 
   useEffect(() => {
+    // Floating icons animation
     iconsRef.current.forEach((icon, index) => {
       gsap.to(icon, {
         y: gsap.utils.random(-15, 15),
@@ -26,12 +32,43 @@ function Home() {
         delay: index * 0.1,
       });
     });
+
+    // Scroll reveal for content
+    gsap.fromTo(contentRef.current, 
+      { opacity: 0, x: -50 },
+      { 
+        opacity: 1, 
+        x: 0, 
+        duration: 1.2, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+
+    // Scroll reveal for image
+    gsap.fromTo(imageRef.current,
+      { opacity: 0, scale: 0.9, x: 50 },
+      {
+        opacity: 1,
+        scale: 1,
+        x: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 80%",
+        }
+      }
+    );
   }, []);
 
   return (
     <main className="container mx-auto max-width section grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[90vh]">
       {/* ========= LEFT CONTENT ========= */}
-      <div className="text-center lg:text-left space-y-8 animate-in fade-in slide-in-from-left duration-1000">
+      <div ref={contentRef} className="text-center lg:text-left space-y-8">
         <div className="space-y-4">
           <p className="text-accent font-medium tracking-wider uppercase text-sm">Welcome to my portfolio</p>
           <h1 className="text-5xl md:text-6xl xl:text-8xl tracking-tight leading-[1.1]">
@@ -66,7 +103,7 @@ function Home() {
       </div>
 
       {/* ========= RIGHT IMAGE & ROUND FLOATING ICONS ========= */}
-      <div className="relative flex justify-center lg:justify-end animate-in fade-in zoom-in duration-1000">
+      <div ref={imageRef} className="relative flex justify-center lg:justify-end">
         <div className="relative w-full max-w-lg aspect-square">
           {/* Decorative background circle */}
           <div className="absolute inset-0 bg-gray-100 rounded-full scale-110 opacity-50 blur-3xl"></div>

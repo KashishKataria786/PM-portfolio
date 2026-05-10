@@ -1,8 +1,53 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { socialMediaUrl } from "../Details";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Socials() {
   const { linkdein, github, leetcode, tryhackme, twitter, youtube } = socialMediaUrl;
+  const headerRef = useRef(null);
+  const socialsRef = useRef([]);
+  socialsRef.current = [];
+
+  const addToSocialsRef = (el) => {
+    if (el && !socialsRef.current.includes(el)) socialsRef.current.push(el);
+  };
+
+  useEffect(() => {
+    // Header reveal
+    gsap.fromTo(headerRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Staggered social cards
+    gsap.fromTo(socialsRef.current,
+      { opacity: 0, scale: 0.9, y: 30 },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: socialsRef.current[0],
+          start: "top 85%",
+        }
+      }
+    );
+  }, []);
 
   const socials = [
     {
@@ -78,7 +123,7 @@ function Socials() {
 
   return (
     <div className="container mx-auto max-width section">
-      <div className="space-y-4 mb-20 text-center md:text-left">
+      <div ref={headerRef} className="space-y-4 mb-20 text-center md:text-left">
         <p className="text-accent font-medium tracking-wider uppercase text-xs">Digital Presence</p>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-soft-black">Connect with <span className="text-accent">Me</span>.</h2>
         <p className="text-muted text-lg max-w-2xl leading-relaxed">
@@ -90,6 +135,7 @@ function Socials() {
         {socials.map((social) => (
           <a
             key={social.name}
+            ref={addToSocialsRef}
             href={social.url}
             target="_blank"
             rel="noreferrer noopener"

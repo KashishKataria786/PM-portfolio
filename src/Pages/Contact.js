@@ -1,13 +1,57 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { contactDetails } from "../Details";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Contact() {
   const { email, phone } = contactDetails;
+  const headerRef = useRef(null);
+  const cardsRef = useRef([]);
+  cardsRef.current = [];
+
+  const addToCardsRef = (el) => {
+    if (el && !cardsRef.current.includes(el)) cardsRef.current.push(el);
+  };
+
+  useEffect(() => {
+    // Header reveal
+    gsap.fromTo(headerRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Staggered contact cards
+    gsap.fromTo(cardsRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardsRef.current[0],
+          start: "top 85%",
+        }
+      }
+    );
+  }, []);
 
   return (
     <div className="container mx-auto max-width section">
       <div className="max-w-4xl mx-auto text-center space-y-12">
-        <div className="space-y-4">
+        <div ref={headerRef} className="space-y-4">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-soft-black">
             Let's build something <span className="text-accent underline decoration-4 underline-offset-8">extraordinary</span> together.
           </h2>
@@ -18,8 +62,9 @@ function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
           <a
+            ref={addToCardsRef}
             href={`mailto:${email}`}
-            className="card group flex flex-col items-center justify-center space-y-4 p-12 hover:border-accent transition-all animate-in fade-in slide-in-from-left duration-1000"
+            className="card group flex flex-col items-center justify-center space-y-4 p-12 hover:border-accent transition-all"
           >
             <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -32,8 +77,9 @@ function Contact() {
           </a>
 
           <a
+            ref={addToCardsRef}
             href={`tel:${phone}`}
-            className="card group flex flex-col items-center justify-center space-y-4 p-12 hover:border-accent transition-all animate-in fade-in slide-in-from-right duration-1000"
+            className="card group flex flex-col items-center justify-center space-y-4 p-12 hover:border-accent transition-all"
           >
             <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

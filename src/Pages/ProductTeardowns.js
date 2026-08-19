@@ -1,4 +1,4 @@
-﻿import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { selectedTeardowns } from "../Details";
@@ -19,26 +19,34 @@ function ProductTeardowns() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    if (sectionRef.current) {
-      const items = sectionRef.current.querySelectorAll(".teardown-card");
-      items.forEach((item) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      });
-    }
+    if (!sectionRef.current) return;
+
+    const items = sectionRef.current.querySelectorAll(".teardown-card");
+
+    items.forEach((item) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
@@ -63,7 +71,7 @@ function ProductTeardowns() {
         </p>
       </div>
 
-      {/* Grid: 1 col on mobile, 3 cols on desktop */}
+      {/* Teardown Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {selectedTeardowns.map((item) => {
           const img = imageMap[item.image];
@@ -89,24 +97,24 @@ function ProductTeardowns() {
                   </div>
                 )}
 
-                {/* Index badge */}
+                {/* Index Badge */}
                 <span className="absolute top-3 left-3 px-2.5 py-1 bg-white border border-border-light text-[10px] font-bold uppercase tracking-label text-soft-black rounded-sm">
                   {item.id}
                 </span>
 
-                {/* Category badge */}
+                {/* Category Badge */}
                 <span className="absolute top-3 right-3 px-2.5 py-1 bg-white border border-border-light text-[10px] font-bold uppercase tracking-label text-soft-black rounded-sm">
                   Teardown
                 </span>
               </div>
 
-              {/* Card body */}
+              {/* Card Body */}
               <div className="p-5 space-y-4">
                 <h3 className="text-base font-extrabold text-soft-black leading-snug tracking-tight group-hover:text-accent transition-colors duration-200">
                   {item.title}
                 </h3>
 
-                {/* Expanding accent underline */}
+                {/* Accent Underline */}
                 <div className="w-6 h-[2px] bg-accent transition-all duration-300 group-hover:w-12" />
 
                 {/* CTA */}

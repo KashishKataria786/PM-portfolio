@@ -104,10 +104,11 @@ function Home() {
           {/* Two Primary CTAs */}
           <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
             <a
-              href="#work"
+              href="/kashish_resume.pdf"
+              download="kashish_resume.pdf"
               className="px-6 py-3.5 bg-soft-black text-white text-sm font-semibold tracking-wide rounded-sm hover:bg-ink transition-all duration-200 inline-flex items-center gap-2 shadow-sm"
             >
-              <span>View Case Studies</span>
+              <span>Resume</span>
               <span className="text-base">↓</span>
             </a>
 

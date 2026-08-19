@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,29 +24,45 @@
 
 @layer utilities {
   .max-width {
-    @apply lg:mx-auto lg:px-24 xl:px-48 px-5 max-w-[1440px];
+    @apply lg:mx-auto lg:px-24 xl:px-48 px-5 max-w-[1500px];
   }
 
   .section {
-    @apply py-24;
+    @apply py-28 md:py-36;
   }
 
+  /* PM-appropriate card — used sparingly */
   .card {
-    @apply bg-white border border-border-light rounded-sm p-6 shadow-sm hover:shadow-md transition-shadow;
+    @apply bg-white border border-border-light rounded-sm p-6;
   }
 
   .button-primary {
-    @apply px-6 py-2 bg-soft-black text-white rounded-sm hover:bg-gray-800 transition-colors;
+    @apply px-6 py-2.5 bg-soft-black text-white text-sm font-semibold tracking-wide rounded-sm hover:bg-ink transition-colors duration-200;
   }
 
   .button-secondary {
-    @apply px-6 py-2 border border-soft-black text-soft-black rounded-sm hover:bg-gray-100 transition-colors;
+    @apply px-6 py-2.5 border border-soft-black text-soft-black text-sm font-semibold tracking-wide rounded-sm hover:bg-gray-50 transition-colors duration-200;
+  }
+
+  /* Overline / section label — used above every section heading */
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-label text-muted;
+  }
+
+  /* Editorial divider */
+  .divider {
+    @apply h-px w-full bg-border-light;
+  }
+
+  /* Reading-measure constrained body text */
+  .body-reading {
+    @apply text-[17px] leading-[1.75] text-muted max-w-reading;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -63,6 +79,6 @@
 }
 
 ::selection {
-  background: #121212;
+  background: #2563EB;
   color: #FFFFFF;
 }

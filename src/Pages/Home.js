@@ -1,141 +1,148 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { personalDetails, techStackDetails } from "../Details";
-
-gsap.registerPlugin(ScrollTrigger);
+import { personalDetails } from "../Details";
 
 function Home() {
-  const { name, tagline, img, summary } = personalDetails;
+  const { headline, role, subheading, coreAreas, img, name } = personalDetails;
 
-  // floating icons refs
-  const iconsRef = useRef([]);
-  const contentRef = useRef(null);
+  const headlineRef = useRef(null);
+  const subRef = useRef(null);
+  const badgesRef = useRef(null);
+  const ctaRef = useRef(null);
   const imageRef = useRef(null);
-  iconsRef.current = [];
-
-  const addToIconsRef = (el) => {
-    if (el && !iconsRef.current.includes(el)) iconsRef.current.push(el);
-  };
 
   useEffect(() => {
-    // Floating icons animation
-    iconsRef.current.forEach((icon, index) => {
-      gsap.to(icon, {
-        y: gsap.utils.random(-15, 15),
-        x: gsap.utils.random(-15, 15),
-        rotate: gsap.utils.random(-10, 10),
-        duration: gsap.utils.random(3, 5),
-        ease: "power1.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: index * 0.1,
-      });
-    });
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // Scroll reveal for content
-    gsap.fromTo(contentRef.current, 
-      { opacity: 0, x: -50 },
-      { 
-        opacity: 1, 
-        x: 0, 
-        duration: 1.2, 
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 80%",
-        }
-      }
-    );
-
-    // Scroll reveal for image
-    gsap.fromTo(imageRef.current,
-      { opacity: 0, scale: 0.9, x: 50 },
-      {
-        opacity: 1,
-        scale: 1,
-        x: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: "top 80%",
-        }
-      }
-    );
+    if (headlineRef.current) {
+      tl.fromTo(
+        headlineRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.9 }
+      );
+    }
+    if (subRef.current) {
+      tl.fromTo(
+        subRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        "-=0.5"
+      );
+    }
+    if (badgesRef.current) {
+      tl.fromTo(
+        badgesRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.7 },
+        "-=0.4"
+      );
+    }
+    if (ctaRef.current) {
+      tl.fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.6 },
+        "-=0.4"
+      );
+    }
+    if (imageRef.current) {
+      tl.fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.96 },
+        { opacity: 1, scale: 1, duration: 1 },
+        "-=0.8"
+      );
+    }
   }, []);
 
   return (
-    <main className="container mx-auto max-width section grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[90vh]">
-      {/* ========= LEFT CONTENT ========= */}
-      <div ref={contentRef} className="text-center lg:text-left space-y-8">
-        <div className="space-y-4">
-          <p className="text-accent font-medium tracking-wider uppercase text-sm">Welcome to my portfolio</p>
-          <h1 className="text-5xl md:text-6xl xl:text-8xl tracking-tight leading-[1.1]">
-            I'm <span className="text-soft-black">{name}</span>
+    <div className="container mx-auto max-width section pt-12 pb-24 md:pt-16 md:pb-32">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Left Column: Core Positioning & Problem-First Narrative */}
+        <div className="lg:col-span-8 space-y-8">
+          {/* Eyebrow badge */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-warm border border-border-warm rounded-sm">
+            <span className="w-2 h-2 rounded-full bg-accent" />
+            <span className="text-[11px] font-bold uppercase tracking-label text-soft-black">
+              {role}
+            </span>
+          </div>
+
+          {/* Large Hero Headline */}
+          <h1
+            ref={headlineRef}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.035em] text-soft-black leading-[1.08]"
+          >
+            {headline}
           </h1>
-          <h2 className="text-2xl md:text-3xl text-muted font-medium">
-            {tagline}
-          </h2>
+
+          {/* Supporting Bio / Narrative */}
+          <p
+            ref={subRef}
+            className="text-lg md:text-xl text-muted leading-relaxed font-normal max-w-2xl"
+          >
+            {subheading}
+          </p>
+
+          {/* Scope of Product Competencies */}
+          <div ref={badgesRef} className="space-y-3 pt-2">
+            <p className="text-[11px] font-bold uppercase tracking-label text-muted">
+              Working Across The Product Lifecycle
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {coreAreas.map((area) => (
+                <span
+                  key={area}
+                  className="text-xs font-semibold px-3 py-1.5 bg-white border border-border-light text-soft-black rounded-sm hover:border-accent/40 transition-colors"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Two Primary CTAs */}
+          <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
+            <a
+              href="#work"
+              className="px-6 py-3.5 bg-soft-black text-white text-sm font-semibold tracking-wide rounded-sm hover:bg-ink transition-all duration-200 inline-flex items-center gap-2 shadow-sm"
+            >
+              <span>View Case Studies</span>
+              <span className="text-base">↓</span>
+            </a>
+
+            <a
+              href="#contact"
+              className="px-6 py-3.5 border border-soft-black text-soft-black text-sm font-semibold tracking-wide rounded-sm hover:bg-warm transition-all duration-200 inline-flex items-center gap-2"
+            >
+              <span>Let's Connect</span>
+              <span className="text-base">→</span>
+            </a>
+          </div>
         </div>
 
-        <p className="text-muted text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
-          {summary}
-        </p>
+        {/* Right Column: Subtle Editorial Portrait */}
+        <div ref={imageRef} className="lg:col-span-4 flex justify-center lg:justify-end">
+          <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] group">
+            {/* Structural background offset */}
+            <div className="absolute inset-0 bg-warm border border-border-warm rounded-sm translate-x-3 translate-y-3 transition-transform group-hover:translate-x-4 group-hover:translate-y-4 duration-300" />
 
-        {/* Buttons */}
-        <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
-          <a
-            href="/resume.pdf"
-            download='resume.pdf'
-            className="button-primary"
-          >
-            Download Resume
-          </a>
-
-          <a
-            href="#contact"
-            className="button-secondary"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </div>
-
-      {/* ========= RIGHT IMAGE & ROUND FLOATING ICONS ========= */}
-      <div ref={imageRef} className="relative flex justify-center lg:justify-end">
-        <div className="relative w-full max-w-lg aspect-square">
-          {/* Decorative background circle */}
-          <div className="absolute inset-0 bg-gray-100 rounded-full scale-110 opacity-50 blur-3xl"></div>
-
-          {/* Floating icons background */}
-          <div className="absolute inset-0 -z-10 overflow-visible">
-            {Object.values(techStackDetails).slice(0, 10).map((icon, i) => (
+            {/* Image frame */}
+            <div className="relative h-full w-full bg-white border border-border-light rounded-sm overflow-hidden p-2">
               <img
-                key={i}
-                ref={addToIconsRef}
-                src={icon}
-                alt="skill"
-                className="absolute w-12 h-12 md:w-16 md:h-16 object-contain grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all cursor-crosshair"
-                style={{
-                  top: `${Math.random() * 80}%`,
-                  left: `${Math.random() * 80}%`,
-                }}
+                src={img}
+                alt={name}
+                className="w-full h-full object-cover object-top grayscale contrast-105 hover:grayscale-0 transition-all duration-700"
               />
-            ))}
-          </div>
-
-          {/* Profile image container */}
-          <div className="relative z-10 w-full h-full rounded-sm overflow-hidden border-8 border-white shadow-2xl">
-            <img
-              className="w-full h-full object-cover"
-              src={img}
-              alt={name}
-            />
+              <div className="absolute bottom-4 left-4 right-4 p-3 bg-white/95 backdrop-blur-sm border border-border-light text-left">
+                <p className="text-xs font-bold text-soft-black">{name}</p>
+                <p className="text-[10px] text-muted tracking-wide uppercase">AI & Product Strategy</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

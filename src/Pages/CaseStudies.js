@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { getAllCaseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../Components/case-study/CaseStudyCard";
 import Header from "../Components/Header";

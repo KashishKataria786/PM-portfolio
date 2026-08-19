@@ -7,9 +7,9 @@ import profile from "./assets/profile.png";
 // Project visuals
 import scanner from "./assets/projects/scanner.png";
 import youtube from "./assets/projects/youtube.png";
-import nobroker from './assets/projects/nobroker.jpg'
-import filo from './assets/projects/Filo.png'
-import angelone from './assets/projects/angelone.jpg'
+// import nobroker from './assets/projects/nobroker.jpg'
+// import filo from './assets/projects/Filo.png'
+// import angelone from './assets/projects/angelone.jpg'
 
 // ─── Personal Details ───────────────────────────────────────
 export const personalDetails = {

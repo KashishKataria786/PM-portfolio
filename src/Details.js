@@ -7,9 +7,9 @@ import profile from "./assets/profile.png";
 // Project visuals
 import scanner from "./assets/projects/scanner.png";
 import youtube from "./assets/projects/youtube.png";
-// import nobroker from './assets/projects/nobroker.jpg'
-// import filo from './assets/projects/Filo.png'
-// import angelone from './assets/projects/angelone.jpg'
+// import agency from "./assets/projects/agency.png";
+// import flashcard from './assets/projects/ai-flashcard.png'
+
 
 // ─── Personal Details ───────────────────────────────────────
 export const personalDetails = {
@@ -288,7 +288,31 @@ export const productPRDs = [
   },
 ];
 
-// ─── Contact & Socials ───────────────────────────────────────
+export const vibecoded =[
+  {
+    id:"01",
+    name:"Agency Flow",
+    title:"Agency Management Software",
+    image:"agency",
+    link:"https://agencyflow-eta.vercel.app"
+  },
+  {
+    id:"02",
+    name:"CuemMath Flash ",
+    title:"AI Powered FlashCard Generation App",
+    image:"flashcard",
+    link:"https://cuemath-flashcard-web-app.vercel.app/"
+  },
+  {
+   id:"03",
+    name:"Scan It Vulnerability Scanner",
+    title:"AI Powered Vulnerability Report Generation",
+    image:"scanner",
+    link:"http://scan-it-report-generation.vercel.app/"
+  }
+]
+
+// ─── Contact & Socials ──────────────────────────────────────
 export const contactDetails = {
   email: "kkofficio@gmail.com",
   linkedin: "https://www.linkedin.com/in/kashishkatariaofficial",

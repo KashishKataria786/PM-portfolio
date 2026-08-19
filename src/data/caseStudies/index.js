@@ -1,12 +1,10 @@
 import { youtubeSearchCaseStudy } from "./youtubeSearch";
 import { securityReportsCaseStudy } from "./securityReports";
-import { angelOneCaseStudy } from "./angelOne";
 
 export const allCaseStudies = [
   youtubeSearchCaseStudy,
   securityReportsCaseStudy,
-  angelOneCaseStudy,
-];
+]
 
 export function getAllCaseStudies() {
   return allCaseStudies;

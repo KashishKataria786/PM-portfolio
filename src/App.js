@@ -18,6 +18,7 @@ import Toolkit from "./Pages/Toolkit";
 import Contact from "./Pages/Contact";
 import CaseStudies from "./Pages/CaseStudies";
 import CaseStudyDetail from "./Pages/CaseStudyDetail";
+import VibeCode from "./Pages/VibeCode";
 
 // Helper component to ensure window scrolls to top on route change or hash navigation
 function ScrollManager() {
@@ -56,6 +57,10 @@ function HomePage() {
         {/* 3. PRODUCT TEARDOWNS & STRATEGY DECKS */}
         <section id="teardowns">
           <ProductTeardowns />
+        </section>
+        
+         <section id="vibecode">
+          <VibeCode />
         </section>
 
         {/* 4. PRODUCT THINKING (How I Think About Products) */}

@@ -28,6 +28,7 @@ function Header() {
   const navLinks = [
     { name: "Selected Work", href: "/#work" },
     { name: "Teardowns", href: "/#teardowns" },
+    { name: "VibeCode", href: "/#vibecode" },
     { name: "Product Thinking", href: "/#thinking" },
     { name: "About", href: "/#about" },
     { name: "Experience", href: "/#experience" },

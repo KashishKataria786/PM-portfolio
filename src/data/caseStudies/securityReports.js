@@ -1,4 +1,6 @@
 import scanner from "../../assets/projects/scanner.png";
+import aiReport from "../../assets/diagrams/aireport.drawio (1) (1).png";
+
 
 export const securityReportsCaseStudy = {
   slug: "automating-security-reports",
@@ -173,6 +175,36 @@ export const securityReportsCaseStudy = {
       chosen: "Option B",
       reasoning:
         "Human judgment is essential for validating findings, assessing business impact, and eliminating false positives — automating security testing itself was an explicit non-goal.",
+    },
+  ],
+
+  // userJourneyDiagrams: [
+  //   {
+  //     src: aiReport,
+  //     title: "AI-Assisted Security Audit & Reporting Workflow",
+  //     badge: "Analyst Workflow & Journey",
+  //     caption:
+  //       "End-to-end journey for security practitioners: from vulnerability scanning and finding dashboard review to stakeholder-tailored AI drafting, mandatory auditor edits, and multi-format client export.",
+  //     details: [
+  //       "Discovery & Scan Ingestion: Seamlessly loads vulnerability findings from enterprise scanners like Burp Suite or Nuclei.",
+  //       "Audience-Specific Report Selection: Dynamically configures tone and technical depth for Developers, Executives, or Compliance officers.",
+  //       "Human-in-the-Loop Safeguard: Auditor edits and validates every finding before export, guaranteeing zero unverified AI hallucinations.",
+  //     ],
+  //   },
+  // ],
+
+  architectureDiagrams: [
+    {
+      src: aiReport,
+      title: "AI Report Generation Processing Architecture",
+      badge: "System Processing Flow",
+      caption:
+        "System data flow connecting vulnerability scan parsers with LLM generation engines, human verification checkpoints, and export pipelines.",
+      details: [
+        "Data Parsing & Normalization: Ingests raw JSON/XML outputs from automated scanners into standardized vulnerability data objects.",
+        "Audience Prompt Pipeline: Injects structured CVEs and remediation templates into LLM contexts with targeted tone constraints.",
+        "Audit Iteration Loop: Seamlessly handles re-scans and auditor revisions before final PDF/DOCX compilation.",
+      ],
     },
   ],
 

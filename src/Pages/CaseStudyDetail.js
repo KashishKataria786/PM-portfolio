@@ -12,6 +12,7 @@ import CaseStudyTimeline from "../Components/case-study/CaseStudyTimeline";
 import CaseStudyGallery from "../Components/case-study/CaseStudyGallery";
 import CaseStudyLinks from "../Components/case-study/CaseStudyLinks";
 import CaseStudyNavigation from "../Components/case-study/CaseStudyNavigation";
+import CaseStudyDiagrams from "../Components/case-study/CaseStudyDiagrams";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
@@ -58,11 +59,13 @@ function CaseStudyDetail() {
     nonGoals,
     productApproach,
     userJourney,
+    userJourneyDiagrams,
     solution,
     gallery,
     productDecisions,
     tradeoffs,
     architecture,
+    architectureDiagrams,
     MVP,
     roadmap,
     metrics,
@@ -292,7 +295,7 @@ function CaseStudyDetail() {
         )}
 
         {/* 9. Product Strategy & User Journey */}
-        {(productApproach || (userJourney && userJourney.length > 0)) && (
+        {(productApproach || (userJourney && userJourney.length > 0) || (userJourneyDiagrams && userJourneyDiagrams.length > 0)) && (
           <CaseStudySection
             overline="Strategy"
             title="Product Strategy & Target Journey"
@@ -304,6 +307,24 @@ function CaseStudyDetail() {
                 subtitle="Mapping the friction-free end-to-end workflow from intent to fulfillment."
                 items={userJourney}
               />
+            )}
+
+            {/* User Journey Diagrams */}
+            {userJourneyDiagrams && userJourneyDiagrams.length > 0 && (
+              <div className="space-y-4 pt-6">
+                <div className="flex items-center justify-between pb-2 border-b border-border-light">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-px bg-accent" />
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-muted">
+                      User Journey & Experience Flow Diagrams
+                    </p>
+                  </div>
+                  <span className="text-[11px] font-mono text-muted">
+                    {userJourneyDiagrams.length} {userJourneyDiagrams.length === 1 ? "diagram" : "diagrams"}
+                  </span>
+                </div>
+                <CaseStudyDiagrams diagrams={userJourneyDiagrams} sectionTitle="Journey Diagram" />
+              </div>
             )}
           </CaseStudySection>
         )}
@@ -368,13 +389,13 @@ function CaseStudyDetail() {
         )}
 
         {/* 14. Technical & Product Architecture */}
-        {architecture && (
+        {(architecture || (architectureDiagrams && architectureDiagrams.length > 0)) && (
           <CaseStudySection
             overline="System Design"
             title="Technical & Product Architecture"
-            intro={architecture.overview}
+            intro={architecture?.overview}
           >
-            {architecture.layers && architecture.layers.length > 0 && (
+            {architecture?.layers && architecture.layers.length > 0 && (
               <div className="space-y-3 pt-2">
                 {architecture.layers.map((layer, idx) => (
                   <div
@@ -389,6 +410,24 @@ function CaseStudyDetail() {
                     </p>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Architecture Diagrams */}
+            {architectureDiagrams && architectureDiagrams.length > 0 && (
+              <div className="space-y-4 pt-6">
+                <div className="flex items-center justify-between pb-2 border-b border-border-light">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-px bg-accent" />
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-muted">
+                      Technical Architecture & Data Flow Diagrams
+                    </p>
+                  </div>
+                  <span className="text-[11px] font-mono text-muted">
+                    {architectureDiagrams.length} {architectureDiagrams.length === 1 ? "diagram" : "diagrams"}
+                  </span>
+                </div>
+                <CaseStudyDiagrams diagrams={architectureDiagrams} sectionTitle="Architecture Diagram" />
               </div>
             )}
           </CaseStudySection>

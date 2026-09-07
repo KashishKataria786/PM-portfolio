@@ -1,4 +1,10 @@
 
+import semanticSimilarity from "../../assets/diagrams/SemanticSimilarity.drawio.png";
+import simpleSemanticArch from "../../assets/diagrams/SimpleSementic architecture with flow.drawio.png";
+import keywordSearch from "../../assets/diagrams/keywordbasesearch.drawio.png";
+import pipeline from "../../assets/diagrams/pipeline.drawio.png";
+import commonYoutubeSearch from "../../assets/diagrams/Untitled Diagram.drawio (2).png";
+
 export const youtubeSearchCaseStudy = {
   slug: "rethinking-youtube-search",
   title: "Rethinking YouTube Search",
@@ -182,6 +188,75 @@ export const youtubeSearchCaseStudy = {
       chosen: "Option B",
       reasoning:
         "Optimized for latency, lower computational cost, and scalability to billions of videos — accepting that relevant videos outside the Top-K can't be recovered later.",
+    },
+  ],
+
+  userJourneyDiagrams: [
+    {
+      src: commonYoutubeSearch,
+      title: "The Common YouTube Search Journey",
+      badge: "Baseline User Journey",
+      caption:
+        "Baseline decision flowchart mapping standard YouTube search: query submission, relevance evaluation, scrolling friction, and the query rephrasing loop when results fall short.",
+      details: [
+        "Illustrates the current decision gate when initial results fail to match intent.",
+        "Highlights the negative feedback cycle: irrelevant results → user scrolls → frustration → manual query reformulation.",
+        "Validates the hypothesis that keyword search forces users into repetitive search attempts.",
+      ],
+    },
+    {
+      src: keywordSearch,
+      title: "Keyword-Based Search Experience",
+      badge: "Current State Friction",
+      caption:
+        "Step-by-step trace of a natural-language query ('How can make a React portfolio'), demonstrating how literal keyword extraction introduces clickbaits, outdated tutorials, and cognitive fatigue.",
+      details: [
+        "System isolates discrete tokens ('React', 'Portfolio', 'Make') instead of holistic intent.",
+        "User receives mixed result sets contaminated with clickbaits and irrelevant recommendations.",
+        "Leads to trial-and-error video clicks before ultimately discovering relevant content.",
+      ],
+    },
+    {
+      src: semanticSimilarity,
+      title: "Semantic Similarity Search Experience",
+      badge: "Proposed Target Experience",
+      caption:
+        "Target user journey under the proposed semantic search model: natural-language intent is vectorized, matched with video transcript embeddings, and hybrid-ranked for first-attempt fulfillment.",
+      details: [
+        "Preserves natural-language phrasing without requiring artificial keyword hacking.",
+        "Performs vector similarity matching against comprehensive video transcripts.",
+        "Yields high first-search satisfaction, dramatically reducing reformulation friction.",
+      ],
+    },
+  ],
+
+  architectureDiagrams: [
+    {
+      src: pipeline,
+      title: "A Simple Semantic Architecture Pipeline",
+      badge: "Core System Pipeline",
+      caption:
+        "High-level architectural pipeline: Query Understanding generates dense vector representations, Semantic Retrieval searches transcript embeddings in the vector database, Top-K candidates are combined with YouTube's hybrid ranking, and feedback loops continuously refine retrieval quality.",
+      details: [
+        "Query Understanding: Converts natural-language input into dense semantic embeddings in real-time.",
+        "Semantic Retrieval: Executes fast approximate nearest neighbor (ANN) search against indexed video transcripts.",
+        "Top-K Candidate Generation: Retrieves the most relevant candidate videos for downstream ranking.",
+        "Hybrid Ranking Integration: Merges semantic candidates with YouTube's existing ranking signals (watch time, CTR, personalization).",
+        "Active Feedback Loop: User interaction and click signals continuously improve vector retrieval quality.",
+      ],
+    },
+    {
+      src: simpleSemanticArch,
+      title: "Semantic Architecture Pipeline with Data Flow",
+      badge: "End-to-End Data Flow",
+      caption:
+        "Detailed system design and data flow showing query vectorization, vector DB search against transcript embeddings, merging Top-K candidates into YouTube's native ranking algorithm, and the relevance evaluation loop.",
+      details: [
+        "Transcript Indexing Pipeline: Generates dense embeddings from video transcripts and stores them in a scalable vector database.",
+        "Dual Retrieval Mechanism: Native search and semantic embedding retrieval run concurrently within low-latency bounds.",
+        "Candidate Blending: Hybrid scoring algorithm balances exact keyword matches with conceptual semantic matches.",
+        "Fallback & Iteration Logic: When results fail user relevance thresholds, interaction feedback tunes future candidate retrieval.",
+      ],
     },
   ],
 
